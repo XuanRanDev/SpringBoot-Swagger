@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dev.xuanran.springbootswagger.mapper.StudentMapper">
+
+    <resultMap id="stu" type="dev.xuanran.springbootswagger.pojo.Student">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="age" column="age"/>
+    </resultMap>
+
+    <select id="getStudentById" parameterType="int" resultMap="stu">
+        select id, name, age
+        from `mybatis-learn`.student
+        where id = #{id}
+    </select>
+
+    <insert id="addStudent" parameterType="Student" >
+        insert into `mybatis-learn`.student(id, name, age)
+        values (#{id}, #{name}, #{age});
+    </insert>
+</mapper>
